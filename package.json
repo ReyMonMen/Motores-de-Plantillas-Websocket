@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.js",
-    "dev": "nodemon src/app.js."
+    "dev": "nodemon"
   },
   "type": "module",
   "author": "",
@@ -14,7 +14,10 @@
   "description": "",
   "dependencies": {
     "express": "^4.18.2",
+    "express-handlebars": "^7.0.7",
     "nodemodule": "^0.3.0",
-    "router": "^1.3.8"
+    "nodemon": "^2.0.22",
+    "router": "^1.3.8",
+    "socket.io": "^4.6.1"
   }
 }

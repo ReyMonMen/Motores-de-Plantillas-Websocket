@@ -1,0 +1,25 @@
+<div>
+    <h1>Hola {{name}}, como andas?</h1>
+
+    <form id="myForm" action="">
+        <label for="texto">Carrito numero: </label>
+        <input type="number" id="texto" name="texto"/>
+        <button type="submit">Enviar</button>
+    </form>
+    <p>El cart consultado es: <span id="numero"></span></p>
+    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.1/socket.io.js"></script>
+<script>
+    let numberInput = 0;
+    const socket = io();
+    const formulario = document.getElementById('myForm');
+    formulario.addEventListener('submit', function (event) {
+      event.preventDefault();
+      document.getElementById("numero").textContent = formulario;
+      numberInput = document.getElementById("texto").value;
+      document.getElementById("numero").textContent = numberInput;
+      console.log(numberInput);
+      socket.emit('cart', numberInput);
+    });
+</script>
