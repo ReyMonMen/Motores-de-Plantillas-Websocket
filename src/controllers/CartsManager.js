@@ -10,7 +10,7 @@ class CartsManager
     {
         this.id = 1;
         this.carts = [];
-        this.fileNameCart = '../src/DB/carts.json';
+        this.fileNameCart = './src/DB/carts.json';
     }
 
     async loadCartData()

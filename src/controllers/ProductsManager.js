@@ -8,7 +8,7 @@ class ProductsManager
     {
         this.id = 1;
         this.#products = [];
-        this.fileName = '../src/DB/products.json';
+        this.fileName = './src/DB/products.json';
     }
 
     async loadData()

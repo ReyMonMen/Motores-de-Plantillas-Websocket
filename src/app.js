@@ -3,6 +3,9 @@ import ProductsManager from './controllers/ProductsManager.js';
 import productsRouter from './routes/productsRouter.js';
 import cartsRouter from './routes/cartsRouter.js';
 import CartsManager from './controllers/CartsManager.js';
+import { engine } from 'express-handlebars'
+import { resolve } from 'path'
+import viewsRouter from './routes/viewsRouter.js'; 
 // import { Router } from 'express';
 
 const productsManager = new ProductsManager;
@@ -12,25 +15,23 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+const viewsPath = resolve('src/views');
+
+app.engine('handlebars', engine({
+    layoutsDir: `${viewsPath}/layouts`,
+    defaultLayout: `${viewsPath}/layouts/home.handlebars`,
+
+}));
+
+
+
+app.set('view engine', 'handlebars');
+app.set('views', viewsPath);
 
 app.use('/api/products', productsRouter);
 app.use('/api/carts', cartsRouter);
+app.use('/', viewsRouter)
 
-// app.get('/api/products', async (req, res) => {
-//     let products = await productsManager.readProducts()
-//     const limit = (+req.query.limit);
-//     if(limit)
-//     {
-//         products = products.slice(0, limit);
-//     }
-    
-//     res.send(products);
-// });
-
-// app.get('/products/:pid', async (req, res) => {
-//     const product = await productsManager.getProductById(+req.params.pid);
-//     res.send(product);
-// });
 
 
 const main = async () =>
