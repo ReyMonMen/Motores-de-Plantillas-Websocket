@@ -1,3 +1,3 @@
-export const carrito = {
+export let carrito = {
     numero: +0
   }

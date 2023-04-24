@@ -33,8 +33,7 @@ viewsRouter.get('/cart/:cid', async (req,res) => {
 });
 
 viewsRouter.get('/realTimeProducts', (req,res) => {
-    console.log("aqui");
-    console.log(+carrito.numero +1);
+    console.log(+carrito.numero);
     res.render('realTimeProducts', {name: 'Cliente', title: 'my first page'});
     
 
